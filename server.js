@@ -1,7 +1,7 @@
 const express = require('express'); //from documentation: express is function
 const app = express();//app is an object
 
-app.use("/vehicle", require("./controllers/vehicleController.js"));
+app.use("/vehicle/info", require("./controllers/vehicleController.js"));
 app.use("/vehicle/location", require("./controllers/locationController.js"));
 
 const APP = 'Tracker BE App:'
