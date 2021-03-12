@@ -1,35 +1,42 @@
 const express = require('express');
 const router = express.Router();
+const Vehicle = require('../models').Vehicle;
 
-const APP = 'Tracker BE App:'
-const TEST_LAT = "32.66666"
-const TEST_LON = "-118.12666"
 
 router.get('/info', (req, res) => {
-    res.send(`${APP} Vehicle ${req.query.id} info:`);
+    Vehicle.findByPk(req.query.id).then( (response) =>{
+        console.log(`GET Vehicle/info from db:`, {response})
+        res.json(response)
+    });
 });
 
 router.post('/info', (req, res) => {
-    res.send(`${APP} New vehicle created 
-    Vehicle name: ${req.query.vehicle_name}, image: ${req.query.img_url}
-    Driver name: ${req.query.driver_name}, contact: ${req.query.phone_number}`);
+    const vehicle = Vehicle.create({
+        vehicle_name: req.query.vehicle_name,
+        img_url: req.query.img_url,
+        driver_name: req.query.driver_name,
+        phone_number: req.query.phone_number
+    }).then( (response) =>{
+        console.log(`POST Vehicle/info from db:`, {response})
+        res.json(response)
+    });
 });
 
-router.get('/location', (req, res) => {
-    console.log(req.query);
-    res.send(`${APP} Vehicle ${req.query.id} current position is, Lat: ${TEST_LAT}, Lon: ${TEST_LON}`);
+router.put('/info', (req, res) => {
+    const vehicle = Vehicle.update({
+        vehicle_name: req.query.vehicle_name,
+        img_url: req.query.img_url,
+        driver_name: req.query.driver_name,
+        phone_number: req.query.phone_number
+    },{
+        where: {
+            id: req.query.id
+        }
+    }).then( (response) =>{
+        // json(response) returns 1 if successful, else 0
+        console.log(`PUT Vehicle/info from db:`, {response})
+        res.json(response)
+    });
 });
-
-router.post('/location', (req, res) => {
-    console.log(req.query);
-    res.send(`${APP} Vehicle ${req.query.id} position updated,Lat: ${req.query.lat}, Lon: ${req.query.lon}`);
-});
-
-router.put('/location', (req, res) => {
-    console.log(req.query);
-    res.send(`${APP} Vehicle ${req.query.id} position updated, Lat: ${req.query.lat}, Lon: ${req.query.lon}`);
-});
-
-
 
 module.exports = router;

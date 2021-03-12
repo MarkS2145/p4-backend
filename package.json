@@ -1,0 +1,26 @@
+{
+  "name": "Tracker",
+  "version": "1.0.0",
+  "description": "Vehicle tracker backend app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkStuebs/p4-backend.git"
+  },
+  "author": "Mark Stuebs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkStuebs/p4-backend/issues"
+  },
+  "homepage": "https://github.com/MarkStuebs/p4-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0"
+  }
+}
