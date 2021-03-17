@@ -18,6 +18,6 @@ app.use((req, res, next) => {
     next();
   });
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log(`${APP} listening`);
 });
