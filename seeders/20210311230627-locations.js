@@ -6,22 +6,22 @@ module.exports = {
       "Locations",
       [
         {
-          lat: "34.11111",
-          lon: "-118.11111",
+          lat: "33.8000",
+          lon: "-118.3000",
           vehicle_fk: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          lat: "34.22222",
-          lon: "-118.22222",
+          lat: "33.8358",
+          lon: "-118.3406",
           vehicle_fk: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          lat: "34.33333",
-          lon: "-118.33333",
+          lat: "33.9000",
+          lon: "-118.1500",
           vehicle_fk: 3,
           createdAt: new Date(),
           updatedAt: new Date(),

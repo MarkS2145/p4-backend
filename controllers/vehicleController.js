@@ -2,7 +2,19 @@ const express = require('express');
 const router = express.Router();
 const Vehicle = require('../models').Vehicle;
 
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 // using route: /vehicle/info
+
+router.get('/all', (req, res) => {
+    Vehicle.findAll().then( (response) =>{
+        console.log(`GET ALL Vehicle/info from db:`, {response})
+        res.json(response)
+    });
+});
 
 router.get('', (req, res) => {
     Vehicle.findByPk(req.query.id).then( (response) =>{
@@ -10,6 +22,8 @@ router.get('', (req, res) => {
         res.json(response)
     });
 });
+
+
 
 router.post('', (req, res) => {
     const vehicle = Vehicle.create({

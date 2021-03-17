@@ -5,7 +5,19 @@ const Location = require('../models').Location;
 const TEST_LAT = "32.66666"
 const TEST_LON = "-118.12666"
 
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 // using route: /vehicle/location
+
+router.get('/all', (req, res) => {
+    Location.findAll().then( (response) =>{
+        console.log(`GET ALL Vehicle/Location from db:`, {response})
+        res.json(response)
+    });
+});
 
 router.get('', (req, res) => {
         Location.findByPk(req.query.id)
